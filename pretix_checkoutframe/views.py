@@ -1,6 +1,6 @@
 from django.urls import reverse
 from pretix.base.models import Event
-from pretix.control.views.event import EventSettingsViewMixin, EventSettingsFormView
+from pretix.control.views.event import EventSettingsFormView, EventSettingsViewMixin
 
 from .forms import CheckoutFrameSettingsForm
 

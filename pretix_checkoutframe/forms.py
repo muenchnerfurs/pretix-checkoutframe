@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from pretix.base.forms import SettingsForm
-from pretix.base.models import Question, Item
+from pretix.base.models import Item, Question
 
 
 class CheckoutFrameSettingsForm(SettingsForm):
@@ -23,7 +23,9 @@ class CheckoutFrameSettingsForm(SettingsForm):
 
     checkoutframe_item = forms.ModelMultipleChoiceField(
         label=_("Items for which to display the checkoutframe"),
-        widget=forms.CheckboxSelectMultiple(attrs={"class": "scrolling-multiple-choice"}),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={"class": "scrolling-multiple-choice"}
+        ),
         queryset=Item.objects.none(),
     )
 
