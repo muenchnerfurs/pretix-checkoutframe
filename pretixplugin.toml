@@ -1,0 +1,5 @@
+[plugin]
+package = "pretix-checkoutframe"
+modules = [ "pretix_checkoutframe" ]
+marketplace_name = "checkoutframe"
+

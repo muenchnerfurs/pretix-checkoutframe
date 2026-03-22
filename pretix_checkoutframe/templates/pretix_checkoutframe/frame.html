@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% for e in elements %}
+<div class="panel panel-default cart">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{ e.border_title }}
+        </h3>
+    </div>
+    <div class="panel-body">
+            <iframe class="checkoutframe" frameborder="0" src="{{ e.frame_url }}" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+</div>
+{% endfor %}
