@@ -44,7 +44,7 @@ def order_info(sender: Event, order: Order, request: HttpRequest, **kwargs):
                 "answer": answer.answer,
             },
             key=key,
-            algorithm="EdDSA",
+            algorithm="ES256",
         )
         return token
 
