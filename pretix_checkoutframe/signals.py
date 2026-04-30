@@ -1,4 +1,6 @@
 import json
+import time
+
 import jwt
 import secrets
 from django.db.models import F
@@ -41,7 +43,8 @@ def order_info(sender: Event, order: Order, request: HttpRequest, **kwargs):
             payload={
                 "order_code": order.code,
                 "pseudonymization_id": answer.pseudonymization_id,
-                "answer": answer.answer,
+                "nick": answer.answer,
+                "exp": int(time.time()) + 86400,
             },
             key=key,
             algorithm="ES256",
