@@ -36,7 +36,7 @@ class CheckoutFrameSettingsForm(SettingsForm):
 
     checkoutframe_key = forms.CharField(
         label=_("Checkout frame key"),
-        help_text=_("Must be a valid ed25519 key in pem format"),
+        help_text=_("Must be a valid prime256v1 key in pem format"),
         widget=forms.Textarea,
     )
 
