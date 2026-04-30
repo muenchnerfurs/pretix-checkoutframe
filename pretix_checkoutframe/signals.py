@@ -41,7 +41,6 @@ def order_info(sender: Event, order: Order, request: HttpRequest, **kwargs):
     def generate_jwt(answer):
         token = jwt.encode(
             payload={
-                "order_code": order.code,
                 "pseudonymization_id": answer.pseudonymization_id,
                 "nick": answer.answer,
                 "exp": int(time.time()) + 86400,
