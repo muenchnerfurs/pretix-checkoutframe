@@ -44,6 +44,7 @@ def order_info(sender: Event, order: Order, request: HttpRequest, **kwargs):
                 "pseudonymization_id": answer.pseudonymization_id,
                 "nick": answer.answer,
                 "exp": int(time.time()) + 86400,
+                "roles": ["user"],
             },
             key=key,
             algorithm="ES256",
