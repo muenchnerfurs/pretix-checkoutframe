@@ -3,7 +3,12 @@
 
 <style nonce="{{ nonce }}">
     .checkoutframe {
-        height: {{ frame_height }};
         width: {{ frame_width }};
+        {% if frame_aspect_ratio %}
+            aspect-ratio: {{ frame_aspect_ratio }};
+            height: auto;
+        {% else %}
+            height: {{ frame_height }};
+        {% endif %}
     }
 </style>

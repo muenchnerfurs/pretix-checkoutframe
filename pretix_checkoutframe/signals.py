@@ -23,6 +23,12 @@ def order_info(sender: Event, order: Order, request: HttpRequest, **kwargs):
     template = loader.get_template("pretix_checkoutframe/frame.html")
 
     key = sender.settings.get("checkoutframe_key")
+
+    if not key:
+        return ""
+
+    key = key.replace("\\n", "\n")
+
     question = sender.settings.get("checkoutframe_question")
     frame_url = sender.settings.get("checkoutframe_frame_url")
     border_title = sender.settings.get("checkoutframe_border_title")
@@ -95,6 +101,7 @@ def html_head(sender: Event, request: HttpRequest, **kwargs):
     ctx = {
         "frame_height": sender.settings.get("checkoutframe_frame_height"),
         "frame_width": sender.settings.get("checkoutframe_frame_width"),
+        "frame_aspect_ratio": sender.settings.get("checkoutframe_aspect_ratio"),
         "nonce": nonce,
     }
 
@@ -142,6 +149,7 @@ settings_hierarkey.add_default(
 )
 settings_hierarkey.add_default("checkoutframe_frame_height", "80vh", str)
 settings_hierarkey.add_default("checkoutframe_frame_width", "100%", str)
+settings_hierarkey.add_default("checkoutframe_aspect_ratio", "", str)
 settings_hierarkey.add_default("checkoutframe_border_title", "Durge {0}", str)
 settings_hierarkey.add_default("checkoutframe_item", None, ItemQuerySet)
 settings_hierarkey.add_default("checkoutframe_question", None, Question)
